@@ -8,8 +8,8 @@ import (
 	"time"
 
 	websocket "github.com/gorilla/websocket"
-	"github.com/slack-go/slack"
-	"github.com/slack-go/slack/slacktest"
+	"github.com/orange1fruit/slack"
+	"github.com/orange1fruit/slack/slacktest"
 	"github.com/stretchr/testify/assert"
 )
 

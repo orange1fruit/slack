@@ -11,13 +11,13 @@ import (
 	"sync"
 	"time"
 
-	"github.com/slack-go/slack"
-	"github.com/slack-go/slack/internal/backoff"
-	"github.com/slack-go/slack/internal/misc"
-	"github.com/slack-go/slack/slackevents"
+	"github.com/orange1fruit/slack"
+	"github.com/orange1fruit/slack/internal/backoff"
+	"github.com/orange1fruit/slack/internal/misc"
+	"github.com/orange1fruit/slack/slackevents"
 
 	"github.com/gorilla/websocket"
-	"github.com/slack-go/slack/internal/timex"
+	"github.com/orange1fruit/slack/internal/timex"
 )
 
 // Run is a blocking function that connects the Slack Socket Mode API and handles all incoming
@@ -444,6 +444,7 @@ func (smc *Client) receiveMessagesInto(ctx context.Context, conn *websocket.Conn
 
 	// check if the connection was closed.
 	if websocket.IsUnexpectedCloseError(err) {
+		smc.Debugf("receiveMessagesInto Error: %s", err.Error())
 		return err
 	}
 
@@ -464,7 +465,7 @@ func (smc *Client) receiveMessagesInto(ctx context.Context, conn *websocket.Conn
 		smc.Events <- newEvent(EventTypeIncomingError, &slack.IncomingEventError{
 			ErrorObj: err,
 		})
-
+		smc.Debugf("receiveMessagesInto Error: %s", err.Error())
 		return err
 	case len(event) == 0:
 		smc.Debugln("Received empty event")
