@@ -361,6 +361,7 @@ func (smc *Client) runRequestHandler(ctx context.Context, websocket chan json.Ra
 func (smc *Client) runMessageReceiver(ctx context.Context, conn *websocket.Conn, sink chan json.RawMessage) error {
 	for {
 		if err := smc.receiveMessagesInto(ctx, conn, sink); err != nil {
+			smc.Debugf("runMessageReceiver Error: %s", err.Error())
 			return err
 		}
 	}
