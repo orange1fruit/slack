@@ -6,9 +6,9 @@ import (
 	"os"
 	"time"
 
-	"github.com/gorilla/websocket"
+	"github.com/orange1fruit/slack"
 
-	"github.com/slack-go/slack"
+	"github.com/gorilla/websocket"
 )
 
 // EventType is the type of events that are emitted by scoketmode.Client.

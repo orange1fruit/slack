@@ -8,10 +8,9 @@ import (
 	"time"
 
 	websocket "github.com/gorilla/websocket"
+	"github.com/orange1fruit/slack"
+	"github.com/orange1fruit/slack/slacktest"
 	"github.com/stretchr/testify/assert"
-
-	"github.com/slack-go/slack"
-	"github.com/slack-go/slack/slacktest"
 )
 
 const (

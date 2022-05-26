@@ -1,4 +1,4 @@
-Slack API in Go [![Go Reference](https://pkg.go.dev/badge/github.com/slack-go/slack.svg)](https://pkg.go.dev/github.com/slack-go/slack)
+Slack API in Go [![Go Reference](https://pkg.go.dev/badge/github.com/orange1fruit/slack.svg)](https://pkg.go.dev/github.com/orange1fruit/slack)
 ===============
 
 This is the original Slack library for Go created by Norberto Lopes, transferred to a GitHub organization.
@@ -15,13 +15,13 @@ a fully managed way.
 There is currently no major version released.
 Therefore, minor version releases may include backward incompatible changes.
 
-See [CHANGELOG.md](https://github.com/slack-go/slack/blob/master/CHANGELOG.md) or [Releases](https://github.com/slack-go/slack/releases) for more information about the changes.
+See [CHANGELOG.md](https://github.com/orange1fruit/slack/blob/master/CHANGELOG.md) or [Releases](https://github.com/orange1fruit/slack/releases) for more information about the changes.
 
 ## Installing
 
 ### *go get*
 
-    $ go get -u github.com/slack-go/slack
+    $ go get -u github.com/orange1fruit/slack
 
 ## Example
 
@@ -31,7 +31,7 @@ See [CHANGELOG.md](https://github.com/slack-go/slack/blob/master/CHANGELOG.md) o
 import (
 	"fmt"
 
-	"github.com/slack-go/slack"
+	"github.com/orange1fruit/slack"
 )
 
 func main() {
@@ -56,7 +56,7 @@ func main() {
 import (
     "fmt"
 
-    "github.com/slack-go/slack"
+    "github.com/orange1fruit/slack"
 )
 
 func main() {
@@ -79,12 +79,12 @@ See https://github.com/slack-go/slack/blob/master/examples/socketmode/socketmode
 
 As mentioned in https://api.slack.com/rtm - for most applications, Socket Mode is a better way to communicate with Slack.
 
-See https://github.com/slack-go/slack/blob/master/examples/websocket/websocket.go
+See https://github.com/orange1fruit/slack/blob/master/examples/websocket/websocket.go
 
 
 ## Minimal EventsAPI usage:
 
-See https://github.com/slack-go/slack/blob/master/examples/eventsapi/events.go
+See https://github.com/orange1fruit/slack/blob/master/examples/eventsapi/events.go
 
 
 ## Contributing

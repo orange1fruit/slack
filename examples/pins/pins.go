@@ -4,7 +4,7 @@ import (
 	"flag"
 	"fmt"
 
-	"github.com/slack-go/slack"
+	"github.com/orange1fruit/slack"
 )
 
 /*

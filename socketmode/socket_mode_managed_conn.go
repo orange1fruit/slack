@@ -11,13 +11,14 @@ import (
 	"sync"
 	"time"
 
+	"github.com/orange1fruit/slack"
+	"github.com/orange1fruit/slack/internal/backoff"
+	"github.com/orange1fruit/slack/internal/misc"
+	"github.com/orange1fruit/slack/slackevents"
+
 	"github.com/gorilla/websocket"
 
-	"github.com/slack-go/slack"
-	"github.com/slack-go/slack/internal/backoff"
-	"github.com/slack-go/slack/internal/misc"
-	"github.com/slack-go/slack/internal/timex"
-	"github.com/slack-go/slack/slackevents"
+	"github.com/orange1fruit/slack/internal/timex"
 )
 
 // Run is a blocking function that connects the Slack Socket Mode API and handles all incoming
@@ -439,9 +440,21 @@ func (smc *Client) receiveMessagesInto(ctx context.Context, conn *websocket.Conn
 	smc.Debugf("Starting to receive message")
 	defer smc.Debugf("Finished to receive message")
 
+	var err error
+	errCh := make(chan error)
 	event := json.RawMessage{}
-	err := conn.ReadJSON(&event)
 
+	go func() {
+		errCh <- conn.ReadJSON(&event)
+		defer close(errCh)
+	}()
+
+	select {
+	case err = <-errCh:
+		break
+	case <-ctx.Done():
+		return ctx.Err()
+	}
 	// check if the connection was closed.
 	if websocket.IsUnexpectedCloseError(err) {
 		return err
