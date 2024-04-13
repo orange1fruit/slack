@@ -6,7 +6,7 @@ import (
 	"net/url"
 	"os"
 
-	"github.com/slack-go/slack"
+	"github.com/orange1fruit/slack"
 )
 
 func main() {
